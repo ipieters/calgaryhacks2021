@@ -1,3 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+.main {
+    background: linear-gradient(to right top, #df6d0f, #6cdbeb);
+}
+
 h1 {
     display: flex;
     flex-direction: column;
@@ -5,4 +15,91 @@ h1 {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+
+.main-container{
+    color: #53d3f3;    
+}
+
+/* Background of dashboard page */
+.class-middle-container{
+    min-height: 70vh;
+    width: 130%;
+    background: linear-gradient
+    (to right top, #65dfc9, #6cdbeb);
+    border-radius: 2rem;
+}
+
+.course-text-middle {
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+#course-name{
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+}
+
+.container-people {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    background-color: red;
+    right: 100%;
+}
+
+.class-people { 
+    float:left;  
+    background:#f0f0f0; 
+    width:40%; 
+    height:280px;
+    margin-right: 10px;
+    position: relative;
+    left: 20px;
+} 
+
+.text-classes{
+    margin-top: 25px;
+}
+.interest-people{ 
+    float:left;  
+    background:#f0f0f0;
+    margin-right: 2px; 
+    width:40%; 
+    height:280px; 
+    border-radius: 1rem;
+    text-align: center;
+    position: relative;
+    left: 45px;
+} 
+
+.people-list{
+    list-style-type: none;
+    display: flex;
+}
+
+
+.class-people {
+    border-radius: 1rem;
+    text-align: center;
+}
+
+
+
+.classes-left-container{
+    position: relative;
+    color: #ffffff;
+}
+
+.friends-right-container{
+    position: relative;
+    left: 30%;
+}
+
+.container-class{
+    display: flex;
+    color: red;
 }
