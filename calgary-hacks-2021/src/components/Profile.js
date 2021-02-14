@@ -174,7 +174,7 @@ useEffect(() => {
               <h2>to {user.bio}</h2>
               <p>{user.email}</p>
               </div>
-       ))*/}
+       ))*
           {currentCom.map((interest1) => (
             <div> 
               <p>{interest1.interest}</p>
