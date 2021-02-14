@@ -10,17 +10,19 @@ function Chat() {
   const[msgs, setMsgs] = useState([]);
   const ref = firebase.firestore().collection("Msgs");
   
-  function getMsgs(){
+  function getMsgs(user1, user2){
     ref.onSnapshot( (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
+        (user1 === doc.data().sender || user2 === doc.data().sender ) &&
+        (user1 === doc.data().receiver   || user2 === doc.data().receiver  ) &&
         items.push(doc.data());
       });
       setMsgs(items)
     });
 }
 useEffect(() => {
-  getMsgs();
+  getMsgs("Julio Agostini", "Michelle");
   // eslint-disable-next-line
 }, []);
 
