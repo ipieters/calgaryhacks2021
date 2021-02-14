@@ -3,9 +3,11 @@ import NavigationBar from "./NavigationBar";
 import{ useState, useEffect, Fragment } from "react";
 import 'firebase/firestore';
 import firebase from '../firebase';
-import { v4 as uuidv4 } from "uuid";
 import Container from 'react-bootstrap/Container'
 import './Dashboard.css'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 function Dashboard() {
     const [courses, setCourses] = useState([]);
@@ -56,7 +58,46 @@ function Dashboard() {
             {/* { <button onClick={() => addInCourse({cname : "CPSC 457", User : "Julio Agostini" })}>
             </button> } */}
             <h1>Dashboard</h1>
-            <Container></Container>
+            <Container>
+				<Row>
+					<Col>
+						<ListGroup as="ul">
+							<ListGroup.Item as="li" active>
+								Cras justo odio
+							</ListGroup.Item>
+							<ListGroup.Item as="li">Dapibus ac facilisis in</ListGroup.Item>
+							<ListGroup.Item as="li" disabled>
+								Morbi leo risus
+							</ListGroup.Item>
+							<ListGroup.Item as="li">Porta ac consectetur ac</ListGroup.Item>
+						</ListGroup>
+					</Col>
+					<Col>
+						<ListGroup as="ul">
+							<ListGroup.Item as="li" active>
+								Cras justo odio
+							</ListGroup.Item>
+							<ListGroup.Item as="li">Dapibus ac facilisis in</ListGroup.Item>
+							<ListGroup.Item as="li" disabled>
+								Morbi leo risus
+							</ListGroup.Item>
+							<ListGroup.Item as="li">Porta ac consectetur ac</ListGroup.Item>
+						</ListGroup>
+					</Col>
+					<Col>
+						<ListGroup as="ul">
+							<ListGroup.Item as="li" active>
+								Cras justo odio
+							</ListGroup.Item>
+							<ListGroup.Item as="li">Dapibus ac facilisis in</ListGroup.Item>
+							<ListGroup.Item as="li" disabled>
+								Morbi leo risus
+							</ListGroup.Item>
+							<ListGroup.Item as="li">Porta ac consectetur ac</ListGroup.Item>
+						</ListGroup>
+					</Col>
+				</Row>
+			</Container>
             <Container></Container>
             <Container></Container>
             {courses.map((course) => (

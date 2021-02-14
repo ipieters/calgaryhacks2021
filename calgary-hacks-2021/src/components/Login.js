@@ -30,6 +30,7 @@ export default function Login() {
     <>
       <Card>
         <Card.Body>
+          <h1>NewMates</h1>
           <h2 className="text-center mb-4">Log In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
