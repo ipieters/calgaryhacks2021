@@ -1,54 +1,37 @@
+import React from "react"
+import './App.css'
 import Signup from "./Signup"
-import firebase from '../firebase';
-import React, { useState, useEffect } from 'react';
-import 'firebase/firestore';
+import { Container } from "react-bootstrap"
+import { AuthProvider } from "../contexts/AuthContext"
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Nav from './Nav';
+import Dashboard from "./Dashboard"
+import Chat from "./Chat"
+import Profile from "./Profile"
+
 
 function App() {
-  const [users, setUsers] = useState([])
-  const [msgs, setMsgs] = useState([])
-
-  const ref = firebase.firestore().collection("Users");
-  const refMsgs = firebase.firestore().collection("Msgs");
-  function getUsers() {
-    ref.onSnapshot( (querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setUsers(items)
-      console.log(setUsers)
-    })
-  }
-  function getMsgs() {
-    refMsgs.onSnapshot( (querySnapshot) => {
-      const items = [];
-      querySnapshot.forEach((doc) => {
-        items.push(doc.data());
-      });
-      setMsgs(items)
-      // querySnapshot.forEach((doc) => {
-      //   user1.name === doc.sender ||  user1.name === doc.receiver &&
-      //     (user2.name === doc.sender || user2.name === doc.receiver && items.push(doc.data)) 
-      // });
-    })
-  }
-
-  useEffect(() => {
-    getMsgs();
-    getUsers(); 
-
-  }, []);
-  return  <div>
-            <Signup />
-            <h1>Users</h1>
-            {msgs.map((msg) => (
-          <div> key =  {msg.txt}
-            <h2>{msg.sender}</h2>
-            <p>{msg.receiver}</p>
-          </div>
-      ))}
+  return (
+        <div className="App">
+          <Router>
+            <AuthProvider>
+              <Switch>
+                <Route exact path="/" component={Nav} />
+                <Route path="/profile" component={Profile} />
+                <Route path="/chat" component={Chat} />
+                <Route path="/dashboard" component={Dashboard} />
+                <div className="w-100" style={{ maxWidth: "400px" }}>
+                  <Container className="d-flex align-items-center justify-content-center" style={{ minHeight: "100vh" }} >
+                    <Route path="/signup" component={Signup} />
+                    {/*<Route path="/login" component={Login} />*/}
+                  </Container>
+                </div>
+              </Switch>
+            </AuthProvider>
+          </Router>
         </div>
-        
+
+  )
 }
 
 export default App;
