@@ -7,8 +7,11 @@ import firebase from '../firebase';
 function Profile() {
   const[user, setUser] = useState([]);
   const[interests, setInterests] = useState([]);
+  const[friends, setFriends] = useState([]);
   const ref = firebase.firestore().collection("Users");
   const ref2 = firebase.firestore().collection("Interest");
+  const ref3 = firebase.firestore().collection("Friends");
+
   
   function getUser(name){
     ref.onSnapshot( (querySnapshot) => {
@@ -30,9 +33,23 @@ function Profile() {
     });
   }
 
+  //make sure you then set the correct friend
+  function getFriends(name){
+    ref3.onSnapshot( (querySnapshot) => {
+      const items3 = [];
+      querySnapshot.forEach((doc) => {
+        (name === doc.data().name1 || name === doc.data().name2) && items3.push(doc.data());
+      });
+      setFriends(items3)
+    });
+  }
+
+  
+
 useEffect(() => {
   getUser("Julio Agostini");
   getInterests("Julio Agostini");
+  getFriends("Julio Agostini");
 
   // eslint-disable-next-line
 }, []);
@@ -50,6 +67,11 @@ useEffect(() => {
           {interests.map((interest1) => (
             <div> 
               <p>{interest1.interest}</p>
+            </div>
+          ))}
+            {friends.map((friend) => (
+            <div> 
+              <p>{friend.name2}</p>
             </div>
           ))}
     </div>
