@@ -21,12 +21,8 @@ export default function Dashboard() {
 
     return(
     	<>
-	    	<Card>
-	    		<Card.Body>
-	    			{error && <Alert variant="danger">{error}</Alert>}
-	    		</Card.Body>
-	    	</Card>
-	        <div className="w-100 text-center mt-2">
+	        <div className="w-100 text-center">
+	        	<Nav/>
 	       		<Button variant="link" onClick={handleLogout}>
 	       			Logout
 	       		</Button>
