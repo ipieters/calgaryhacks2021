@@ -5,6 +5,8 @@ import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import "./NavigationBar.css";
 import {useAuth} from "../contexts/AuthContext";
+import logo from "./imgs/logo.png";
+
 
 
 function NavigationBar() {
@@ -26,7 +28,7 @@ function NavigationBar() {
         <div>
             <Navbar bg="dark" expand="lg" className="justify-content-center">
                 <Link to="/">
-                    <Navbar.Brand>NewMates</Navbar.Brand>
+                    <Navbar.Brand><img src={logo} width="200px" height="100px"/></Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="justify-content-center"/>
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">

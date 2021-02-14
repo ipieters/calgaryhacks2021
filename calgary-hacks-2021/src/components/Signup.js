@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link , useHistory } from "react-router-dom"
+import logo from "./imgs/logo.png";
 
 export default function Signup() {
     const emailRef = useRef()
@@ -35,7 +36,7 @@ export default function Signup() {
     <>
       <Card>
         <Card.Body>
-          <h1>NewMates</h1>
+          <img src={logo} width="300px" height="200px"/>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
