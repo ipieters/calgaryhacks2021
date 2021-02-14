@@ -51,11 +51,9 @@ function Dashboard() {
 
     return(
         <div>
-
             <NavigationBar />
             {/* { <button onClick={() => addInCourse({cname : "CPSC 457", User : "Julio Agostini" })}>
             </button> } */}
-            
             <h1>Dashboard</h1>
             {courses.map((course) => (
             <div> <h1>Name {course.name} </h1>
