@@ -9,7 +9,9 @@ function Chat() {
   const ref = firebase.firestore().collection("Msgs");
   
   function getMsgs(user1, user2){
-    ref.onSnapshot( (querySnapshot) => {
+    ref
+    .orderBy('order')
+    .onSnapshot( (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
         (user1 === doc.data().sender || user2 === doc.data().sender ) &&
