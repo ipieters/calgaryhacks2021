@@ -26,11 +26,22 @@ useEffect(() => {
   // eslint-disable-next-line
 }, []);
 
+  function addMsg(newMsg){
+    ref
+    .doc() 
+    .set(newMsg)
+    .catch((err) => {
+      console.error(err);
+    });
+}
+
 
   return (
     <div>
           <Nav />
           <h1>Sup</h1>
+          {/* <button onClick={() => addMsg({order : 2, receiver : "Michelle", sender: "Julio Agostini", txt :"Good job" })}>
+          </button> */}
           {msgs.map((msg) => (
             <div> from = {msg.sender}
               <h2>to {msg.receiver}</h2>
