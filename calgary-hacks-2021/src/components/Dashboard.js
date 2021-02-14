@@ -1,12 +1,17 @@
 import React from 'react';
-import Nav from "./Nav";
+import NavigationBar from "./NavigationBar";
 
 function Dashboard() {
 
     return(
         <div>
-            <Nav />
+            <NavigationBar />
             <h1>Dashboard</h1>
+            <div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
     );
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import Nav from "./Nav";
+import NavigationBar from "./NavigationBar";
 
 function Profile() {
   return(
     <div>
-        <Nav />
+        <NavigationBar />
         <h1>Profile Page</h1>
     </div>
   );

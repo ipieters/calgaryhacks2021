@@ -1,10 +1,10 @@
 import React from 'react';
-import Nav from "./Nav";
+import NavigationBar from "./NavigationBar";
 
 function Chat() {
   return (
     <div>
-          <Nav />
+          <NavigationBar />
           <h1>Chat</h1>
     </div>
 
