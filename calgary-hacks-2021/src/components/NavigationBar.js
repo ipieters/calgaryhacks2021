@@ -16,9 +16,9 @@ function NavigationBar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="justify-content-center"/>
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
                     <Navbar className="justify-content-center">
-                        <Nav.Link  ><Button variant="flat" size="xxl"><Link className="link-style" to="/dashboard">Dashboard</Link></Button></Nav.Link>
-                        <Nav.Link  ><Button variant="flat" size="xxl"><Link className="link-style" to="/profile">Profile</Link></Button></Nav.Link>
-                        <Nav.Link  ><Button variant="flat" size="xxl"><Link className="link-style" to="/chat">Chat</Link></Button></Nav.Link>
+                        <Nav.Link ><Link className="link-style" to="/dashboard"><Button variant="flat" size="xxl">Dashboard</Button></Link></Nav.Link>
+                        <Nav.Link ><Link className="link-style" to="/profile"><Button variant="flat" size="xxl">Profile</Button></Link></Nav.Link>
+                        <Nav.Link ><Link className="link-style" to="/chat"><Button variant="flat" size="xxl">Chats</Button></Link></Nav.Link>
                     </Navbar>
                 </Navbar.Collapse>
             </Navbar>
