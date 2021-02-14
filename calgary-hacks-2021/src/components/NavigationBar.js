@@ -1,17 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import "./NavigationBar.css";
+import {useAuth} from "../contexts/AuthContext";
+
 
 function NavigationBar() {
+    const [error, setError] = useState("")
+	const {currentUser, logout}=useAuth()
+	const history = useHistory()
+
+	async function handleLogout() {
+		setError("")
+		try {
+			await logout()
+			history.push("/login")
+		} catch {
+			setError("Failed to logout")
+		}
+	}
 
     return(
         <div>
-            <Navbar bg="light" expand="lg" className="justify-content-center">
+            <Navbar bg="dark" expand="lg" className="justify-content-center">
                 <Link to="/">
-                    <Navbar.Brand >NewMates</Navbar.Brand>
+                    <Navbar.Brand>NewMates</Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" className="justify-content-center"/>
                 <Navbar.Collapse id="basic-navbar-nav" className="justify-content-center">
@@ -20,25 +35,11 @@ function NavigationBar() {
                         <Nav.Link ><Link className="link-style" to="/profile"><Button variant="flat" size="xxl">Profile</Button></Link></Nav.Link>
                         <Nav.Link ><Link className="link-style" to="/chat"><Button variant="flat" size="xxl">Chats</Button></Link></Nav.Link>
                     </Navbar>
+                    <Navbar.Brand><Button variant="link" onClick={handleLogout}>Logout</Button></Navbar.Brand>
                 </Navbar.Collapse>
+
             </Navbar>
         </div>
-        /*<nav>
-            <ul className="nav-links">
-                <Link style={navStyle} to="/">
-                    <h3>Logo</h3>
-                </Link>
-                <Link to="/dashboard">
-                    Dashboard
-                </Link>
-                <Link style={navStyle} to="/profile">
-                    <li>Profile</li>
-                </Link>
-                <Link style={navStyle} to="/chat">    
-                   <li>Chat</li>
-                </Link>
-            </ul>
-        </nav>*/
 
     )
 }

@@ -4,7 +4,8 @@ import{ useState, useEffect, Fragment } from "react";
 import 'firebase/firestore';
 import firebase from '../firebase';
 import { v4 as uuidv4 } from "uuid";
-
+import Container from 'react-bootstrap/Container'
+import './Dashboard.css'
 
 function Dashboard() {
     const [courses, setCourses] = useState([]);
@@ -55,9 +56,12 @@ function Dashboard() {
             {/* { <button onClick={() => addInCourse({cname : "CPSC 457", User : "Julio Agostini" })}>
             </button> } */}
             <h1>Dashboard</h1>
+            <Container></Container>
+            <Container></Container>
+            <Container></Container>
             {courses.map((course) => (
-            <div> <h1>Name {course.name} </h1>
-            <h2>Description: {course.desc}</h2>
+            <div> <h2>Name {course.name} </h2>
+            <h3>Description: {course.desc}</h3>
             <p></p>
             </div>
           ))}

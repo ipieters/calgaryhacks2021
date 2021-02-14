@@ -76,7 +76,7 @@ useEffect(() => {
   return(
     <div>
         <NavigationBar />
-        <main>
+        <main className="main-container">
       <section className="glass">
         <div className="dashboard">
           <div className="user">
@@ -126,13 +126,13 @@ useEffect(() => {
       </section>
     </main>
 
-        /*<NavigationBar />
+        {/*<NavigationBar />
         <h1>Profile Page</h1>
         {/* { <button onClick={() => addInterest({interest : "biking", name : "Julio Agostini" })}>
           </button> } */}
         {/* { <button onClick={() => addFriend({name1 : "Julio Agostini", name2 : "Michelle" })}>
           </button> } */}
-       /* {user.map((user) => (
+       {/* {user.map((user) => (
             <div> from = {user.name}
               <h2>to {user.bio}</h2>
               <p>{user.email}</p>
@@ -147,7 +147,7 @@ useEffect(() => {
             <div> 
               <p>{friend.name2}</p>
             </div>
-          ))}*/
+          ))}*/}
 
     </div>
   );
