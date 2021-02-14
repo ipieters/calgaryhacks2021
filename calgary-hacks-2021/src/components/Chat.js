@@ -1,10 +1,13 @@
 import React from 'react';
+import Nav from "./Nav";
 
 function Chat() {
   return (
-    <div className="App">
-      <h1>chat</h1>
+    <div>
+          <Nav />
+          <h1>Chat</h1>
     </div>
+
   );
 }
 
