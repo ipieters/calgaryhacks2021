@@ -35,6 +35,7 @@ export default function Signup() {
     <>
       <Card>
         <Card.Body>
+          <h1>NewMates</h1>
           <h2 className="text-center mb-4">Sign Up</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
