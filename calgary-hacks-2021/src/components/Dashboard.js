@@ -56,18 +56,6 @@ function Dashboard() {
         });
     }
 
-	{courses.map((course) => (
-		<div> <h2>Name {course.name} </h2>
-		<h3>Description: {course.desc}</h3>
-		<p></p>
-		</div>
-	  ))}
-		{incourses.map((inc) => (
-		<div>
-		<h2>{inc.user} is in {inc.cname}</h2>
-		<p></p>
-		</div>
-	  ))}
 	  
     return(
         <div>

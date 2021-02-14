@@ -17,7 +17,7 @@ const CourseList = (props) => {
             </Row>
             <Row style={{paddingTop: "20px" }}>
             <ListGroup as="ul" style={{minWidth: "250px"}}>
-                <ListGroup.Item as="li" active>People in your Courses</ListGroup.Item> 
+                <ListGroup.Item as="li" active>Friends in your Courses</ListGroup.Item> 
                {props.incourses.map((incourse)=> (
                         
                             <ListGroup.Item as="li" >{incourse.user} - {incourse.cname}</ListGroup.Item>
