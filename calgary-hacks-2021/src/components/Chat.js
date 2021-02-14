@@ -8,21 +8,20 @@ function Chat() {
   const[msgs, setMsgs] = useState([]);
   const ref = firebase.firestore().collection("Msgs");
   
-  function getMsgs(user1, user2){
+  function getMsgs(user1){
     ref
     .orderBy('order')
     .onSnapshot( (querySnapshot) => {
       const items = [];
       querySnapshot.forEach((doc) => {
-        (user1 === doc.data().sender || user2 === doc.data().sender ) &&
-        (user1 === doc.data().receiver   || user2 === doc.data().receiver  ) &&
+        (user1 === doc.data().sender || user1 === doc.data().receiver) &&
         items.push(doc.data());
       });
       setMsgs(items)
     });
 }
 useEffect(() => {
-  getMsgs("Julio Agostini", "Michelle");
+  getMsgs("Julio Agostini");
   // eslint-disable-next-line
 }, []);
 
