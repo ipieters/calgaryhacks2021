@@ -5,16 +5,21 @@ import NavigationBar from "./NavigationBar";
 import{ useState, useEffect, Fragment } from "react";
 import 'firebase/firestore';
 import firebase from '../firebase';
+import { v4 as uuidv4 } from 'uuid';
 
 function Profile() {
   const[user, setUser] = useState([]);
+  const[users, setUsers] = useState([]);
   const[interests, setInterests] = useState([]);
+  const[interestsAll, setInterestsAll] = useState([]);
   const[friends, setFriends] = useState([]);
+  const[currentCom, setCurrentCom] = useState([]);
+  
   const ref = firebase.firestore().collection("Users");
   const ref2 = firebase.firestore().collection("Interest");
   const ref3 = firebase.firestore().collection("Friends");
 
-  
+
   function getUser(name){
     ref.onSnapshot( (querySnapshot) => {
       const items = [];
@@ -25,6 +30,17 @@ function Profile() {
     });
 }
 
+function getAllUsers(){
+  ref.onSnapshot( (querySnapshot) => {
+    const items = [];
+    querySnapshot.forEach((doc) => {
+      items.push(doc.data());
+    });
+    setUser(items)
+  });
+}
+  
+
   function getInterests(name){
     ref2.onSnapshot( (querySnapshot) => {
       const items1 = [];
@@ -32,7 +48,21 @@ function Profile() {
         name === doc.data().name && items1.push(doc.data());
       });
       setInterests(items1)
+      console.log(`the size of interests is ${interests.length}`)
     });
+  }
+
+  function getCommonInterests(){
+    const newref = firebase.firestore().collection("Interest");
+    newref.where('name', '!=', "Julio Agostini")
+      //.where('interest', 'in', interests)
+      .onSnapshot((querySnapshot) => {
+        const items = [];
+        querySnapshot.forEach((doc) => {
+          items.push(doc.data());
+        });
+        setCurrentCom(items);
+      });
   }
 
   //make sure you then set the correct friend
@@ -54,6 +84,7 @@ function Profile() {
       console.error(err);
     });
 }
+
 function addFriend(newFriend){
   ref3
   .doc() 
@@ -63,12 +94,17 @@ function addFriend(newFriend){
   });
 }
 
+
+
   
 
 useEffect(() => {
   getUser("Julio Agostini");
+  getAllUsers();
   getInterests("Julio Agostini");
   getFriends("Julio Agostini");
+  getCommonInterests();
+
 
   // eslint-disable-next-line
 }, []);
@@ -128,6 +164,7 @@ useEffect(() => {
 
         {/*<NavigationBar />
         <h1>Profile Page</h1>
+        <h2> {console.log(`lets see here the size is ${currentCom.length}`)} </h2>
         {/* { <button onClick={() => addInterest({interest : "biking", name : "Julio Agostini" })}>
           </button> } */}
         {/* { <button onClick={() => addFriend({name1 : "Julio Agostini", name2 : "Michelle" })}>
@@ -137,13 +174,14 @@ useEffect(() => {
               <h2>to {user.bio}</h2>
               <p>{user.email}</p>
               </div>
-          ))}
-          {interests.map((interest1) => (
+       ))*
+          {currentCom.map((interest1) => (
             <div> 
               <p>{interest1.interest}</p>
+              <h1> {interest1.name} </h1>
             </div>
           ))}
-            {friends.map((friend) => (
+            {/*friends.map((friend) => (
             <div> 
               <p>{friend.name2}</p>
             </div>

@@ -5,25 +5,29 @@ import 'firebase/firestore';
 import firebase from '../firebase';
 import Container from 'react-bootstrap/Container'
 import './Dashboard.css'
-import ListGroup from 'react-bootstrap/ListGroup'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import CourseList from './CourseList';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Dashboard() {
     const [courses, setCourses] = useState([]);
-    const [incourse, setInCourses] = useState([]);
+    const [incourses, setInCourses] = useState([]);
 
     const refc = firebase.firestore().collection("Courses");
     const refi = firebase.firestore().collection("InCourses");
 
-    function getCourses(){
-        refc.onSnapshot( (querySnapshot) => {
-          const items = [];
-          querySnapshot.forEach((doc) => {
-            items.push(doc.data());
-          });
-          setCourses(items)
-        });
+    async function getCourses(){
+		try {
+			await refc.onSnapshot( (querySnapshot) => {
+				const items = [];
+				querySnapshot.forEach((doc) => {
+					items.push(doc.data());
+				});
+			setCourses(items)
+		});
+		} catch (error){
+
+		}
     }
 
     function getInCourses(){
@@ -52,6 +56,7 @@ function Dashboard() {
         });
     }
 
+	  
     return(
         <div>
             <NavigationBar />
@@ -123,6 +128,7 @@ function Dashboard() {
 						</ListGroup>
             </div>
 						
+
 					</Col>
 				</Row>
 			</Container>
@@ -142,6 +148,7 @@ function Dashboard() {
           ))}
             */}
             </div>
+
         </div>
         
     );
