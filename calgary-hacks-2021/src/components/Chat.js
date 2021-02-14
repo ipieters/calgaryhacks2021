@@ -3,6 +3,9 @@ import NavigationBar from "./NavigationBar";
 import{ useState, useEffect, Fragment } from "react";
 import 'firebase/firestore';
 import firebase from '../firebase';
+import ChatFeed from './chat/ChatFeed';
+import { ChatEngine } from 'react-chat-engine';
+
 
 function Chat() {
   const[msgs, setMsgs] = useState([]);
@@ -38,18 +41,28 @@ useEffect(() => {
   return (
     <div>
           <NavigationBar />
-          <h1>Chat</h1>
-          <h1>Sup</h1>
-          {/* <button onClick={() => addMsg({order : 2, receiver : "Michelle", sender: "Julio Agostini", txt :"Good job" })}>
-          </button> */}
-          {msgs.map((msg) => (
-            <div> from = {msg.sender}
-              <h2>to {msg.receiver}</h2>
-              <p>{msg.txt}</p>
-              </div>
-          ))}
+          <ChatEngine 
+            height="100vh"
+            projectID="8a6bc180-2673-4faa-973f-45705f51efb4"
+            userName="Julio"
+            userSecret="123"
+            renderChatFeed={(chatAppProps) => <ChatFeed {...chatAppProps} />}
+        />
+    )
   </div>
   );
 }
 
 export default Chat;
+
+
+         {/* <h1>Chat</h1>
+          <h1>Sup</h1>
+          {/* <button onClick={() => addMsg({order : 2, receiver : "Michelle", sender: "Julio Agostini", txt :"Good job" })}>
+          </button>}
+          {msgs.map((msg) => (
+            <div> from = {msg.sender}
+              <h2>to {msg.receiver}</h2>
+              <p>{msg.txt}</p>
+              </div>
+          ))}*/}
