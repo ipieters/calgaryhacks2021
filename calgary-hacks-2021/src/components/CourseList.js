@@ -7,23 +7,14 @@ const CourseList = (props) => {
           <div>
             <Row>
             <ListGroup as="ul" style={{minWidth: "250px"}}>
-                <ListGroup.Item as="li" active>Your Courses</ListGroup.Item> 
+                <ListGroup.Item as="li" active>{props.title}</ListGroup.Item> 
                 {
                     props.courses.map((course)=> (
-                        <ListGroup.Item as="li">{course.name} - {course.desc}</ListGroup.Item>   
+                        <ListGroup.Item as="li">{course.name || course.user} - {course.desc || course.cname}</ListGroup.Item>   
                     ))} 
                    
 			    </ListGroup>
             </Row>
-            <Row style={{paddingTop: "20px" }}>
-            <ListGroup as="ul" style={{minWidth: "250px"}}>
-                <ListGroup.Item as="li" active>Friends in your Courses</ListGroup.Item> 
-               {props.incourses.map((incourse)=> (
-                        
-                            <ListGroup.Item as="li" >{incourse.user} - {incourse.cname}</ListGroup.Item>
-                        ))}
-           		</ListGroup>
-            </Row> 
           </div>
 
          

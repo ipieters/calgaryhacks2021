@@ -25,7 +25,7 @@ h1 {
 /* Background of dashboard page */
 .class-middle-container{
     min-height: 70vh;
-    width: 130%;
+
     background: linear-gradient
     (to right top, #65dfc9, #6cdbeb);
     border-radius: 2rem;

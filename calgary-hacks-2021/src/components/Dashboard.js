@@ -68,14 +68,7 @@ function Dashboard() {
 				<Row>
 					<Col>
             <div className="classes-left-container">
-            <ListGroup as="ul">
-							<ListGroup.Item as="li" active>
-								Classes
-							</ListGroup.Item>
-							<ListGroup.Item as="li">CPSC 433</ListGroup.Item>
-							<ListGroup.Item as="li" disabled>CPSC 413</ListGroup.Item>
-							<ListGroup.Item as="li">DINO 345</ListGroup.Item>
-						</ListGroup>
+           <CourseList courses={courses} title="Your courses!"/>
             </div>
 						
 					</Col>
@@ -116,16 +109,8 @@ function Dashboard() {
 					</Col>
 					<Col>
             <div className="friends-right-container">
-            <ListGroup as="ul">
-							<ListGroup.Item as="li" active>
-								List of Friends
-							</ListGroup.Item>
-							<ListGroup.Item as="li">Luigi</ListGroup.Item>
-							<ListGroup.Item as="li">
-								Birdo
-							</ListGroup.Item>
-							<ListGroup.Item as="li">Bowser</ListGroup.Item>
-						</ListGroup>
+			<CourseList courses={incourses} title="Your friends!"/>
+
             </div>
 						
 
