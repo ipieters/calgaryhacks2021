@@ -3,6 +3,7 @@ import Nav from "./Nav";
 import{ useState, useEffect, Fragment } from "react";
 import 'firebase/firestore';
 import firebase from '../firebase';
+import { v4 as uuidv4 } from "uuid";
 
 
 function Dashboard() {
@@ -38,9 +39,21 @@ function Dashboard() {
         // eslint-disable-next-line
       }, []);
 
+      
+      function addInCourse(newInCourse){
+        refi
+        .doc() 
+        .set(newInCourse)
+        .catch((err) => {
+          console.error(err);
+        });
+    }
+
     return(
         <div>
             <Nav />
+            {/* { <button onClick={() => addInCourse({cname : "CPSC 457", User : "Julio Agostini" })}>
+            </button> } */}
             <h1>Dashboard</h1>
             {courses.map((course) => (
             <div> <h1>Name {course.name} </h1>

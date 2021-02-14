@@ -44,6 +44,23 @@ function Profile() {
     });
   }
 
+  function addInterest(newInterest){
+    ref2
+    .doc() 
+    .set(newInterest)
+    .catch((err) => {
+      console.error(err);
+    });
+}
+function addFriend(newFriend){
+  ref3
+  .doc() 
+  .set(newFriend)
+  .catch((err) => {
+    console.error(err);
+  });
+}
+
   
 
 useEffect(() => {
@@ -58,6 +75,10 @@ useEffect(() => {
     <div>
         <Nav />
         <h1>Profile Page</h1>
+        {/* { <button onClick={() => addInterest({interest : "biking", name : "Julio Agostini" })}>
+          </button> } */}
+        {/* { <button onClick={() => addFriend({name1 : "Julio Agostini", name2 : "Michelle" })}>
+          </button> } */}
         {user.map((user) => (
             <div> from = {user.name}
               <h2>to {user.bio}</h2>
